@@ -1033,13 +1033,14 @@ function seqLabel(item, monthLabel, prevLabel) {
  */
 
 // ป้ายเดือนไทย (ย่อ) สำหรับข้อความกฎ — ตั้งค่าจาก calendar ตอน checkAll (ไม่ fix เป็นมี.ค.)
-const _TH_MON_ABBR = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+// หมายเหตุ: ใช้ชื่อ _TH_MON_ABBR_RULES (ไม่ชนกับ _TH_MON_ABBR ของ model.js ตอน bundle รวมเป็น IIFE ก้อนเดียว)
+const _TH_MON_ABBR_RULES = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
 let _curMonLabel = "มี.ค.";
 let _prevMonLabel = "ก.พ.";
 function _setMonthLabels(calendar) {
   if (!calendar || typeof calendar.month !== "number") return;
-  _curMonLabel = _TH_MON_ABBR[calendar.month] || "";
-  _prevMonLabel = _TH_MON_ABBR[(calendar.month + 11) % 12] || "";
+  _curMonLabel = _TH_MON_ABBR_RULES[calendar.month] || "";
+  _prevMonLabel = _TH_MON_ABBR_RULES[(calendar.month + 11) % 12] || "";
 }
 const thDate = (d) => `${d} ${_curMonLabel}`;
 
